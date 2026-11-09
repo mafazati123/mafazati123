@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website profil pribadi Zuhrotul Mafazati.">
+  <title>Profil | Zuhrotul Mafazati</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #28183e;
+      --muted: #756783;
+      --purple: #7b3fc6;
+      --lavender: #eadcf8;
+      --white: #fffaff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); font-family: "DM Sans", sans-serif;
+      background: #fbf8ff;
+    }
+    .hero {
+      min-height: 570px; padding: 26px max(7vw, 24px) 90px; color: white;
+      background: linear-gradient(125deg, #32134f 0%, #7138a9 48%, #c18be8 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+      background: rgba(255,255,255,.09);
+    }
+    .hero::before { width: 390px; height: 390px; right: -90px; top: 70px; }
+    .hero::after { width: 180px; height: 180px; right: 280px; bottom: -100px; }
+    nav { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+    .brand { font-weight: 700; letter-spacing: 1px; }
+    nav a { color: white; text-decoration: none; margin-left: 24px; font-size: .92rem; opacity: .9; }
+    nav a:hover { opacity: 1; text-decoration: underline; }
+    .hero-content { max-width: 1100px; margin: 105px auto 0; position: relative; z-index: 1; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: .76rem; opacity: .82; }
+    h1 { font: 700 clamp(2.8rem, 7vw, 5.3rem)/1.06 "Playfair Display", serif; margin: 16px 0; max-width: 760px; }
+    .hero p { max-width: 540px; line-height: 1.8; color: #f3e8ff; }
+    .button {
+      display: inline-block; margin-top: 20px; padding: 13px 23px; border-radius: 30px;
+      background: white; color: #5c2c87; text-decoration: none; font-weight: 700;
+      box-shadow: 0 8px 24px #24103333;
+    }
+    main { max-width: 1100px; margin: -48px auto 0; padding: 0 24px 70px; position: relative; }
+    .panel {
+      background: white; border: 1px solid #f0e8f8; border-radius: 24px;
+      padding: clamp(24px, 4vw, 42px); box-shadow: 0 18px 55px #44205b12;
+      margin-bottom: 26px;
+    }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; align-items: center; }
+    h2 { font: 700 2rem "Playfair Display", serif; margin: 0 0 15px; color: #45215f; }
+    .lead { line-height: 1.85; color: var(--muted); margin: 0; }
+    .profile-mark {
+      min-height: 210px; border-radius: 20px; display: grid; place-items: center;
+      background: linear-gradient(145deg, #f0e2ff, #d6b5f1); color: #63358b;
+      font: 700 5rem "Playfair Display", serif;
+    }
+    .details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 25px; }
+    .detail { padding: 15px; border-radius: 15px; background: #faf6ff; }
+    .detail small { display: block; color: #927fa4; margin-bottom: 5px; }
+    .detail strong { overflow-wrap: anywhere; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill {
+      border-radius: 19px; padding: 23px; min-height: 175px;
+      background: linear-gradient(145deg, #faf5ff, #eee0fb); border: 1px solid #eadcf7;
+    }
+    .skill .symbol { font-size: 2rem; }
+    .skill h3 { margin: 14px 0 7px; color: #512875; }
+    .skill p { margin: 0; color: var(--muted); line-height: 1.6; font-size: .93rem; }
+    .gallery-note { color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .gallery-item {
+      min-height: 190px; border-radius: 17px; padding: 20px; display: flex;
+      flex-direction: column; justify-content: end; color: white; overflow: hidden;
+      background: linear-gradient(145deg, #60318b, #bd8be2);
+    }
+    .gallery-item:nth-child(2) { background: linear-gradient(145deg, #472263, #9361bd); }
+    .gallery-item:nth-child(3) { background: linear-gradient(145deg, #8752ad, #d0a5ed); }
+    .gallery-item span { font-size: 2rem; margin-bottom: 10px; }
+    .gallery-item strong { font-size: 1.05rem; }
+    .gallery-item small { opacity: .85; margin-top: 5px; }
+    footer { text-align: center; padding: 28px 20px; color: #8b7a99; font-size: .9rem; }
+    @media (max-width: 720px) {
+      nav { align-items: flex-start; gap: 16px; flex-direction: column; }
+      nav a { margin: 0 16px 0 0; }
+      .hero-content { margin-top: 75px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .profile-mark { min-height: 150px; }
+      .cards, .gallery { grid-template-columns: 1fr; }
+      .details { grid-template-columns: 1fr; }
+      main { margin-top: -35px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="beranda">
+    <nav>
+      <div class="brand">ZUHROTUL M.</div>
+      <div>
+        <a href="#tentang">Tentang</a>
+        <a href="#keahlian">Keahlian</a>
+        <a href="#galeri">Galeri</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <div class="eyebrow">Website Profil Pribadi</div>
+      <h1>Halo, saya<br>Zuhrotul Mafazati.</h1>
+      <p>Saya tertarik pada dunia desain grafis, senang mencoba hal-hal kreatif, dan terus belajar mengembangkan kemampuan diri.</p>
+      <a class="button" href="#tentang">Kenali Saya</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="tentang">
+      <div class="about-grid">
+        <div>
+          <h2>Tentang Saya</h2>
+          <p class="lead">Perkenalkan, nama saya <strong>Zuhrotul Mafazati</strong>. Saya memiliki ketertarikan pada desain grafis dan kegiatan kreatif. Saya senang memasak dan berdandan sebagai hobi, serta selalu terbuka untuk mempelajari hal baru.</p>
+        </div>
+        <div class="profile-mark" aria-label="Inisial Z">Z</div>
+      </div>
+      <div class="details">
+        <div class="detail"><small>Nama lengkap</small><strong>Zuhrotul Mafazati</strong></div>
+        <div class="detail"><small>Domisili</small><strong>Nglegok, Kabupaten Blitar</strong></div>
+        <div class="detail"><small>Email</small><strong>zatimafa70@gmail.com</strong></div>
+        <div class="detail"><small>Hobi</small><strong>Memasak dan berdandan</strong></div>
+      </div>
+    </section>
+
+    <section class="panel" id="keahlian">
+      <h2>Keahlian Saya</h2>
+      <p class="gallery-note">Hal yang saya sukai dan terus saya kembangkan.</p>
+      <div class="cards">
+        <article class="skill">
+          <div class="symbol">🎨</div>
+          <h3>Desain Grafis</h3>
+          <p>Membuat karya visual yang menarik, kreatif, dan memiliki tampilan yang rapi.</p>
+        </article>
+        <article class="skill">
+          <div class="symbol">🍳</div>
+          <h3>Memasak</h3>
+          <p>Mencoba resep dan mengolah berbagai bahan menjadi hidangan.</p>
+        </article>
+        <article class="skill">
+          <div class="symbol">✨</div>
+          <h3>Gaya & Kreativitas</h3>
+          <p>Menyukai kegiatan berdandan dan mengeksplorasi kreativitas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="galeri">
+      <h2>Galeri Karya & Minat</h2>
+      <p class="gallery-note">Bagian ini bisa diisi dengan foto hasil desain grafis atau karya pribadi. Ganti kotak contoh dengan foto milikmu sendiri.</p>
+      <div class="gallery">
+        <div class="gallery-item"><span>🖌️</span><strong>Karya Desain</strong><small>Contoh: poster, logo, atau desain feed</small></div>
+        <div class="gallery-item"><span>💜</span><strong>Proses Kreatif</strong><small>Contoh: proses membuat desain</small></div>
+        <div class="gallery-item"><span>🌷</span><strong>Karya Favorit</strong><small>Tambahkan hasil karya terbaikmu</small></div>
+      </div>
+    </section>
+  </main>
+  <footer>© 2026 Zuhrotul Mafazati · Dibuat dengan kreativitas</footer>
+</body>
+</html>
